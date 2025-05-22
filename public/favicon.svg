@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <!-- Fundo do ícone - bloco de minecraft estilizado -->
+  <rect width="64" height="64" rx="8" fill="#3B5532" />
+  
+  <!-- Padrão de bloco estilizado -->
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="#4C6A3E" />
+  <rect x="12" y="12" width="40" height="40" rx="2" fill="#5D8049" />
+  
+  <!-- Letra J estilizada -->
+  <path d="M20 18H36V24H32V42H24V24H20V18Z" fill="#FFD700" />
+  
+  <!-- Pícareta estilizada representando Minecraft -->
+  <path d="M40 24L46 30L40 36L34 30L40 24Z" fill="#E0E0E0" />
+  <path d="M40 24L46 30L40 36" stroke="#A0A0A0" stroke-width="2" />
+  <path d="M34 30L40 24" stroke="#A0A0A0" stroke-width="2" />
+  <path d="M34 30L40 36" stroke="#A0A0A0" stroke-width="2" />
+  <rect x="38" y="36" width="4" height="10" rx="1" fill="#8B4513" />
+</svg> 
