@@ -94,7 +94,7 @@ const SubscriptionsPage = () => {
       type: 'VIP',
       title: 'Plano VIP',
       description: 'Desbloqueie itens interessantes e permissões exclusivas!',
-      price: 14.90,
+      price: 19.90,
       days: 30,
       items: vipKitItems,
       bgColor: 'bg-blue-900',

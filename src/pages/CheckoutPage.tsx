@@ -29,7 +29,7 @@ const CheckoutPage = () => {
 
   if (type === 'vip') {
     title = 'Plano VIP';
-    price = 14.90;
+    price = 19.90;
     description = 'Acesso VIP por 30 dias com itens e permissões exclusivas';
   } else if (type === 'top') {
     title = 'Plano TOP';
