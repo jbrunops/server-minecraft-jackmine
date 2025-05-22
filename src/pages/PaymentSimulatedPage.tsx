@@ -159,7 +159,7 @@ const PaymentSimulatedPage = () => {
         
         <button 
           onClick={() => navigate(-1)} 
-          className="btn-secondary bg-gray-500 hover:bg-gray-600 w-full"
+          className="bg-gray-500 hover:bg-gray-600 text-white rounded-md px-6 py-3 font-medium shadow-md transition-all hover:shadow-lg w-full"
           disabled={isProcessing}
         >
           Voltar

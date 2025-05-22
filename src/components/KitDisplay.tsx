@@ -65,21 +65,21 @@ const KitDisplay = (props: KitProps) => {
           bg: 'bg-blue-50',
           border: 'border-blue-200',
           highlight: 'text-blue-600',
-          button: 'bg-blue-600 hover:bg-blue-700'
+          buttonClass: 'bg-blue-600 hover:bg-blue-700 text-white'
         };
       case 'TOP':
         return {
           bg: 'bg-purple-50',
           border: 'border-purple-200',
           highlight: 'text-purple-600',
-          button: 'bg-purple-600 hover:bg-purple-700'
+          buttonClass: 'bg-purple-600 hover:bg-purple-700 text-white'
         };
       default:
         return {
           bg: 'bg-gray-50',
           border: 'border-gray-200',
           highlight: 'text-gray-600',
-          button: 'bg-gray-600 hover:bg-gray-700'
+          buttonClass: 'bg-gray-600 hover:bg-gray-700 text-white'
         };
     }
   };
@@ -108,7 +108,7 @@ const KitDisplay = (props: KitProps) => {
         {!isFree && !isActive && (
           <Link 
             to={`/pagamento/${type.toLowerCase()}`} 
-            className={`btn-secondary ${colors.button}`}
+            className={`rounded-md px-6 py-3 font-medium shadow-md transition-all hover:shadow-lg active:translate-y-0.5 ${colors.buttonClass}`}
           >
             Comprar
           </Link>
@@ -126,7 +126,7 @@ const KitDisplay = (props: KitProps) => {
       <div className="mb-6">
         <button 
           onClick={() => setShowItems(!showItems)}
-          className="text-sm text-secondary hover:text-secondary-foreground flex items-center font-medium"
+          className="text-sm text-secondary hover:text-primary flex items-center font-medium"
         >
           {showItems ? 'Esconder itens' : 'Ver todos os itens'}
           <svg 
@@ -155,7 +155,7 @@ const KitDisplay = (props: KitProps) => {
       <div className="pt-4 border-t border-gray-200">
         <button 
           onClick={() => setShowCheck(!showCheck)} 
-          className="text-sm text-secondary hover:text-secondary-foreground font-medium"
+          className="text-sm text-secondary hover:text-primary font-medium"
         >
           Verificar assinatura
         </button>
