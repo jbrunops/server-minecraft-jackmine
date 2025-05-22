@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-1">
             <div className="flex flex-col items-center md:items-start">
-              <img src="/logo.png" alt="JackMine" className="h-16 w-auto mb-4" />
+              <img src="/logo.png" alt="JackMine" className="h-[5.2rem] w-auto mb-4" />
               <p className="text-gray-600 text-sm text-center md:text-left">
                 Seu servidor favorito de Minecraft com os melhores kits e diversão garantida!
               </p>
@@ -21,11 +21,6 @@ const Footer = () => {
               <li>
                 <Link to="/" className="text-gray-600 hover:text-secondary">
                   Início
-                </Link>
-              </li>
-              <li>
-                <Link to="/loja" className="text-gray-600 hover:text-secondary">
-                  Loja
                 </Link>
               </li>
               <li>

@@ -78,8 +78,8 @@ const PaymentSuccessPage = () => {
           <Link to="/" className="btn-primary">
             Voltar para a Página Inicial
           </Link>
-          <Link to="/loja" className="btn-secondary">
-            Continuar Comprando
+          <Link to="/assinaturas" className="btn-secondary">
+            Ver Assinaturas
           </Link>
         </div>
         

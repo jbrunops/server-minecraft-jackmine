@@ -58,7 +58,7 @@ const CheckoutPage = () => {
       price = item.price;
       description = item.description;
     } else {
-      navigate('/loja');
+      navigate('/');
       return null;
     }
   } else {

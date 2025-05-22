@@ -1,4 +1,3 @@
-
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@12.0.0?target=deno";
 
@@ -72,7 +71,7 @@ serve(async (req) => {
       line_items: lineItems,
       mode,
       success_url: `${req.headers.get("origin")}/pagamento-sucesso`,
-      cancel_url: `${req.headers.get("origin")}/${productType === "subscription" ? "assinaturas" : "loja"}`,
+      cancel_url: `${req.headers.get("origin")}/${productType === "subscription" ? "assinaturas" : ""}`,
       metadata: {
         username,
         product_type: productType,

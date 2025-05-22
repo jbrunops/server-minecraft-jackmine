@@ -9,16 +9,13 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-3">
           <Link to="/" className="flex items-center">
-            <img src="/logo.png" alt="JackMine" className="h-14 w-auto" />
+            <img src="/logo.png" alt="JackMine" className="h-[8.55rem] w-auto" />
           </Link>
           
           {/* Menu para desktop */}
           <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className="text-gray-700 hover:text-secondary font-medium">
               Início
-            </Link>
-            <Link to="/loja" className="text-gray-700 hover:text-secondary font-medium">
-              Loja
             </Link>
             <Link to="/assinaturas" className="text-gray-700 hover:text-secondary font-medium">
               Assinaturas
@@ -55,9 +52,6 @@ const Navbar = () => {
             <div className="flex flex-col space-y-4">
               <Link to="/" className="text-gray-700 hover:text-secondary font-medium px-4 py-2">
                 Início
-              </Link>
-              <Link to="/loja" className="text-gray-700 hover:text-secondary font-medium px-4 py-2">
-                Loja
               </Link>
               <Link to="/assinaturas" className="text-gray-700 hover:text-secondary font-medium px-4 py-2">
                 Assinaturas

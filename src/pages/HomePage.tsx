@@ -11,13 +11,12 @@ const HomePage = () => {
           <img 
             src="/logo.png" 
             alt="JackMine Logo" 
-            className="w-64 md:w-80 h-auto mb-8 drop-shadow-lg"
+            className="w-[19.2rem] md:w-[24rem] h-auto mb-8 drop-shadow-lg"
           />
           <p className="text-lg md:text-xl max-w-2xl mx-auto text-gray-700">
             Seu novo servidor favorito de Minecraft com os melhores kits e diversão garantida!
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/loja" className="btn-primary">Explorar Loja</a>
             <a href="/assinaturas" className="btn-secondary">Ver Assinaturas</a>
           </div>
         </div>
