@@ -11,11 +11,8 @@ const HomePage = () => {
           <img 
             src="/logo.png" 
             alt="JackMine Logo" 
-            className="w-40 md:w-56 h-auto mb-6 drop-shadow-lg"
+            className="w-64 md:w-80 h-auto mb-8 drop-shadow-lg"
           />
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            <span className="gradient-text">JACKMINE</span>
-          </h1>
           <p className="text-lg md:text-xl max-w-2xl mx-auto text-gray-700">
             Seu novo servidor favorito de Minecraft com os melhores kits e diversão garantida!
           </p>

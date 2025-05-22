@@ -15,6 +15,11 @@ const NotFound = () => {
   return (
     <div className="min-h-[calc(100vh-200px)] flex items-center justify-center">
       <div className="text-center p-8 bg-white rounded-lg shadow-lg max-w-md">
+        <img 
+          src="/logo.png" 
+          alt="JackMine Logo" 
+          className="h-16 w-auto mx-auto mb-6"
+        />
         <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
           <svg 
             xmlns="http://www.w3.org/2000/svg" 

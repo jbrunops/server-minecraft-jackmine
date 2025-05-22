@@ -72,7 +72,7 @@ const StorePage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-12">
-        <h1 className="section-title">Loja JACKMINE</h1>
+        <h1 className="section-title">Loja</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
           Compre itens especiais e comandos para melhorar sua experiência no servidor.
           Todos os itens são entregues instantaneamente após a confirmação do pagamento.

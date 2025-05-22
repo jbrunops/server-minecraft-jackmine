@@ -117,7 +117,7 @@ const SubscriptionsPage = () => {
       <div className="text-center mb-12">
         <h1 className="section-title">Assinaturas</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          Escolha o plano perfeito para sua aventura no servidor JACKMINE.
+          Escolha o plano perfeito para sua aventura no servidor.
           Cada plano oferece benefícios exclusivos para melhorar sua experiência de jogo.
         </p>
       </div>

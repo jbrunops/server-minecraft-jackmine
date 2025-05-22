@@ -7,10 +7,9 @@ const Navbar = () => {
   return (
     <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center py-4">
-          <Link to="/" className="flex items-center space-x-3">
-            <img src="/logo.png" alt="JackMine" className="h-10 w-auto" />
-            <span className="text-xl font-bold gradient-text">JACKMINE</span>
+        <div className="flex justify-between items-center py-3">
+          <Link to="/" className="flex items-center">
+            <img src="/logo.png" alt="JackMine" className="h-14 w-auto" />
           </Link>
           
           {/* Menu para desktop */}
