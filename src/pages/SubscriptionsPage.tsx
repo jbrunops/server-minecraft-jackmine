@@ -1,4 +1,3 @@
-
 import React from 'react';
 import KitDisplay, { KitProps } from '../components/KitDisplay';
 
@@ -116,8 +115,8 @@ const SubscriptionsPage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-minecraft mb-2">Assinaturas</h1>
-        <p className="max-w-2xl mx-auto">
+        <h1 className="section-title">Assinaturas</h1>
+        <p className="text-gray-600 max-w-2xl mx-auto">
           Escolha o plano perfeito para sua aventura no servidor JACKMINE.
           Cada plano oferece benefícios exclusivos para melhorar sua experiência de jogo.
         </p>
@@ -139,35 +138,35 @@ const SubscriptionsPage = () => {
         ))}
       </div>
       
-      <div className="mt-16 bg-minecraft-black bg-opacity-70 p-6 rounded-lg max-w-4xl mx-auto">
-        <h2 className="text-2xl font-minecraft mb-4 text-center">Perguntas Frequentes</h2>
+      <div className="mt-16 bg-white p-8 rounded-xl shadow-sm max-w-4xl mx-auto">
+        <h2 className="text-2xl font-bold text-primary mb-6 text-center">Perguntas Frequentes</h2>
         
         <div className="space-y-6">
-          <div>
-            <h3 className="font-minecraft text-green-400 mb-2">Como funciona a renovação da assinatura?</h3>
-            <p className="text-sm">
+          <div className="p-4 bg-gray-50 rounded-lg">
+            <h3 className="font-bold text-secondary mb-2">Como funciona a renovação da assinatura?</h3>
+            <p className="text-gray-600">
               As assinaturas não renovam automaticamente. Você precisa comprar novamente após o período de 30 dias.
             </p>
           </div>
           
-          <div>
-            <h3 className="font-minecraft text-green-400 mb-2">Posso mudar meu plano antes dos 30 dias?</h3>
-            <p className="text-sm">
+          <div className="p-4 bg-gray-50 rounded-lg">
+            <h3 className="font-bold text-secondary mb-2">Posso mudar meu plano antes dos 30 dias?</h3>
+            <p className="text-gray-600">
               Sim! Você pode fazer upgrade a qualquer momento. O período restante do seu plano atual
               será convertido proporcionalmente para o novo plano.
             </p>
           </div>
           
-          <div>
-            <h3 className="font-minecraft text-green-400 mb-2">Os kits são entregues automaticamente?</h3>
-            <p className="text-sm">
+          <div className="p-4 bg-gray-50 rounded-lg">
+            <h3 className="font-bold text-secondary mb-2">Os kits são entregues automaticamente?</h3>
+            <p className="text-gray-600">
               Sim! Após o pagamento ser confirmado, você receberá seus benefícios instantaneamente no servidor.
             </p>
           </div>
           
-          <div>
-            <h3 className="font-minecraft text-green-400 mb-2">O que acontece quando minha assinatura termina?</h3>
-            <p className="text-sm">
+          <div className="p-4 bg-gray-50 rounded-lg">
+            <h3 className="font-bold text-secondary mb-2">O que acontece quando minha assinatura termina?</h3>
+            <p className="text-gray-600">
               Quando sua assinatura terminar, você voltará ao plano FREE. Todos os itens que você já tinha
               não serão perdidos, mas você não poderá mais usar as permissões especiais.
             </p>

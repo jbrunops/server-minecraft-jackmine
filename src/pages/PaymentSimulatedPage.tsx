@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -74,72 +73,72 @@ const PaymentSimulatedPage = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-md mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-minecraft mb-2">Simulação de Pagamento</h1>
-          <p className="text-sm text-gray-300 mb-2">
+          <h1 className="section-title">Simulação de Pagamento</h1>
+          <p className="text-gray-600 mb-2">
             Esta é uma simulação da página de pagamento do Stripe.
           </p>
-          <div className="bg-amber-600 bg-opacity-30 border border-amber-500 text-amber-300 p-2 rounded text-sm">
+          <div className="bg-amber-50 border border-amber-300 text-amber-800 p-3 rounded-md text-sm">
             Em produção, você seria redirecionado para a página segura do Stripe.
           </div>
         </div>
         
-        <div className="minecraft-panel mb-8">
-          <h2 className="text-xl font-minecraft mb-4">Escolha o Método de Pagamento</h2>
+        <div className="card mb-8">
+          <h2 className="text-xl font-bold mb-6 text-primary">Escolha o Método de Pagamento</h2>
           
           <div className="space-y-4">
             <div 
-              className={`p-4 border-2 rounded cursor-pointer ${
+              className={`p-4 border rounded-md cursor-pointer transition-all ${
                 selectedMethod === 'pix' 
-                  ? 'border-green-500 bg-green-900 bg-opacity-30' 
-                  : 'border-gray-700'
+                  ? 'border-green-500 bg-green-50' 
+                  : 'border-gray-200 hover:border-gray-300'
               }`}
               onClick={() => setSelectedMethod('pix')}
             >
               <div className="flex items-center">
-                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center mr-3 text-white">
                   P
                 </div>
                 <div>
-                  <div className="font-minecraft">PIX</div>
-                  <div className="text-xs text-gray-300">Pagamento instantâneo</div>
+                  <div className="font-bold">PIX</div>
+                  <div className="text-sm text-gray-600">Pagamento instantâneo</div>
                 </div>
               </div>
             </div>
             
             <div 
-              className={`p-4 border-2 rounded cursor-pointer ${
+              className={`p-4 border rounded-md cursor-pointer transition-all ${
                 selectedMethod === 'card' 
-                  ? 'border-blue-500 bg-blue-900 bg-opacity-30' 
-                  : 'border-gray-700'
+                  ? 'border-blue-500 bg-blue-50' 
+                  : 'border-gray-200 hover:border-gray-300'
               }`}
               onClick={() => setSelectedMethod('card')}
             >
               <div className="flex items-center">
-                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-3 text-white">
                   C
                 </div>
                 <div>
-                  <div className="font-minecraft">Cartão de Crédito</div>
-                  <div className="text-xs text-gray-300">Visa, Mastercard, Elo, etc.</div>
+                  <div className="font-bold">Cartão de Crédito</div>
+                  <div className="text-sm text-gray-600">Visa, Mastercard, Elo, etc.</div>
                 </div>
               </div>
             </div>
             
             <div 
-              className={`p-4 border-2 rounded cursor-pointer ${
+              className={`p-4 border rounded-md cursor-pointer transition-all ${
                 selectedMethod === 'boleto' 
-                  ? 'border-yellow-500 bg-yellow-900 bg-opacity-30' 
-                  : 'border-gray-700'
+                  ? 'border-yellow-500 bg-yellow-50' 
+                  : 'border-gray-200 hover:border-gray-300'
               }`}
               onClick={() => setSelectedMethod('boleto')}
             >
               <div className="flex items-center">
-                <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center mr-3">
+                <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center mr-3 text-white">
                   B
                 </div>
                 <div>
-                  <div className="font-minecraft">Boleto</div>
-                  <div className="text-xs text-gray-300">Prazo de compensação: 1-3 dias úteis</div>
+                  <div className="font-bold">Boleto</div>
+                  <div className="text-sm text-gray-600">Prazo de compensação: 1-3 dias úteis</div>
                 </div>
               </div>
             </div>
@@ -148,7 +147,7 @@ const PaymentSimulatedPage = () => {
         
         <button 
           onClick={handlePaymentSimulation} 
-          className={`minecraft-button bg-green-700 hover:bg-green-600 w-full text-lg ${
+          className={`btn-primary w-full text-lg mb-4 ${
             isProcessing ? 'opacity-70 cursor-not-allowed' : ''
           }`}
           disabled={isProcessing}
@@ -160,7 +159,7 @@ const PaymentSimulatedPage = () => {
         
         <button 
           onClick={() => navigate(-1)} 
-          className="minecraft-button bg-gray-700 hover:bg-gray-600 w-full mt-4"
+          className="btn-secondary bg-gray-500 hover:bg-gray-600 w-full"
           disabled={isProcessing}
         >
           Voltar

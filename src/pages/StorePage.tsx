@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -73,8 +72,8 @@ const StorePage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-minecraft mb-2">Loja JACKMINE</h1>
-        <p className="max-w-2xl mx-auto">
+        <h1 className="section-title">Loja JACKMINE</h1>
+        <p className="text-gray-600 max-w-2xl mx-auto">
           Compre itens especiais e comandos para melhorar sua experiência no servidor.
           Todos os itens são entregues instantaneamente após a confirmação do pagamento.
         </p>
@@ -85,10 +84,10 @@ const StorePage = () => {
           {categories.map((category) => (
             <button
               key={category}
-              className={`minecraft-button px-4 py-2 capitalize ${
+              className={`px-4 py-2 rounded-md font-medium capitalize transition-colors ${
                 activeCategory === category 
-                  ? 'bg-minecraft-grass border-green-700' 
-                  : ''
+                  ? 'bg-secondary text-white' 
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
               onClick={() => setActiveCategory(category)}
             >
@@ -100,34 +99,34 @@ const StorePage = () => {
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredItems.map((item) => (
-          <div key={item.id} className="minecraft-panel hover:border-minecraft-grass transition-colors">
-            <div className="h-40 bg-black bg-opacity-40 flex items-center justify-center mb-4 overflow-hidden">
-              <div className="w-24 h-24 bg-gray-800 rounded flex items-center justify-center animate-float">
+          <div key={item.id} className="card hover:shadow-xl transition-all">
+            <div className="h-48 bg-gray-50 flex items-center justify-center mb-4 rounded-md overflow-hidden">
+              <div className="w-32 h-32 bg-white rounded-full shadow-inner flex items-center justify-center">
                 <img 
                   src={item.imageUrl} 
                   alt={item.name}
-                  className="w-20 h-20 object-contain opacity-90"
+                  className="w-24 h-24 object-contain"
                 />
               </div>
             </div>
             
-            <h3 className="text-lg font-minecraft mb-2">{item.name}</h3>
-            <p className="text-sm mb-4 text-gray-300">{item.description}</p>
+            <h3 className="text-xl font-bold text-primary mb-2">{item.name}</h3>
+            <p className="text-gray-600 mb-6">{item.description}</p>
             
             <div className="flex justify-between items-center mt-4">
-              <span className="text-yellow-300 font-minecraft">
+              <span className="text-2xl font-bold text-primary">
                 R$ {item.price.toFixed(2)}
               </span>
               <Link 
                 to={`/pagamento/item/${item.id}`} 
-                className="minecraft-button bg-green-700 hover:bg-green-600"
+                className="btn-secondary"
               >
                 Comprar
               </Link>
             </div>
             
-            <div className="mt-4 text-xs text-gray-400">
-              <span className="py-1 px-2 bg-black bg-opacity-30 rounded capitalize">
+            <div className="mt-4 text-xs">
+              <span className="py-1 px-2 bg-gray-100 rounded-full text-gray-600 capitalize">
                 {item.category}
               </span>
             </div>
@@ -136,7 +135,7 @@ const StorePage = () => {
       </div>
       
       <div className="mt-16 text-center">
-        <Link to="/assinaturas" className="minecraft-button bg-purple-800 hover:bg-purple-700 text-xl px-8 py-3">
+        <Link to="/assinaturas" className="btn-primary text-xl px-8 py-4">
           Ver Planos de Assinatura
         </Link>
       </div>

@@ -117,39 +117,39 @@ const CheckoutPage = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-md mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-minecraft mb-2">Finalizar Compra</h1>
-          <p className="text-sm text-gray-300">Complete suas informações para prosseguir</p>
+          <h1 className="section-title">Finalizar Compra</h1>
+          <p className="text-gray-600">Complete suas informações para prosseguir</p>
         </div>
         
-        <div className="minecraft-panel mb-8">
-          <h2 className="text-xl font-minecraft mb-4">Resumo do Pedido</h2>
+        <div className="card mb-8">
+          <h2 className="text-xl font-bold mb-4 text-primary">Resumo do Pedido</h2>
           
-          <div className="bg-minecraft-black bg-opacity-50 p-4 rounded mb-4">
+          <div className="bg-gray-50 p-4 rounded-md mb-4">
             <div className="flex justify-between mb-2">
-              <span>Produto:</span>
-              <span className="font-minecraft">{title}</span>
+              <span className="text-gray-600">Produto:</span>
+              <span className="font-bold">{title}</span>
             </div>
-            <div className="text-sm text-gray-300 mb-4">{description}</div>
-            <div className="flex justify-between border-t border-gray-700 pt-2">
-              <span>Total:</span>
-              <span className="text-yellow-300 font-minecraft">R$ {price.toFixed(2)}</span>
+            <div className="text-gray-600 mb-4">{description}</div>
+            <div className="flex justify-between border-t border-gray-200 pt-3">
+              <span className="font-medium">Total:</span>
+              <span className="text-xl font-bold text-secondary">R$ {price.toFixed(2)}</span>
             </div>
           </div>
         </div>
         
-        <form onSubmit={handleSubmit} className="minecraft-panel">
-          <h2 className="text-xl font-minecraft mb-4">Suas Informações</h2>
+        <form onSubmit={handleSubmit} className="card">
+          <h2 className="text-xl font-bold mb-6 text-primary">Suas Informações</h2>
           
           <div className="mb-4">
-            <label htmlFor="username" className="block mb-2 text-sm">
+            <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-700">
               Nome de Usuário no Minecraft
             </label>
             <input
               type="text"
               id="username"
-              className={`w-full bg-minecraft-black text-white p-3 rounded ${
-                errors.username ? 'border-2 border-red-500' : ''
-              }`}
+              className={`w-full bg-white border ${
+                errors.username ? 'border-red-500' : 'border-gray-300'
+              } text-gray-900 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary`}
               placeholder="Seu nome no jogo"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -163,15 +163,15 @@ const CheckoutPage = () => {
           </div>
           
           <div className="mb-6">
-            <label htmlFor="email" className="block mb-2 text-sm">
+            <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700">
               E-mail para Contato
             </label>
             <input
               type="email"
               id="email"
-              className={`w-full bg-minecraft-black text-white p-3 rounded ${
-                errors.email ? 'border-2 border-red-500' : ''
-              }`}
+              className={`w-full bg-white border ${
+                errors.email ? 'border-red-500' : 'border-gray-300'
+              } text-gray-900 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary`}
               placeholder="seu@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -188,17 +188,17 @@ const CheckoutPage = () => {
             <input
               type="checkbox"
               id="terms"
-              className="mr-2"
+              className="mr-2 h-4 w-4 accent-secondary"
               required
             />
-            <label htmlFor="terms" className="text-sm">
-              Concordo com os <a href="#" className="text-blue-400 hover:underline">Termos de Serviço</a>
+            <label htmlFor="terms" className="text-sm text-gray-600">
+              Concordo com os <a href="#" className="text-secondary hover:underline">Termos de Serviço</a>
             </label>
           </div>
           
           <button 
             type="submit" 
-            className={`minecraft-button bg-green-700 hover:bg-green-600 w-full text-lg ${
+            className={`btn-primary w-full text-lg ${
               isLoading ? 'opacity-70 cursor-not-allowed' : ''
             }`}
             disabled={isLoading}

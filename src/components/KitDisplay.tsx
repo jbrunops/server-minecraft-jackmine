@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { checkSubscriptionStatus } from '../services/stripeService';
@@ -57,53 +56,82 @@ const KitDisplay = (props: KitProps) => {
 
   const isFree = type === 'FREE';
   const isActive = userSubscription === type;
+  
+  // Cores do tipo de plano
+  const getPlanColors = () => {
+    switch(type) {
+      case 'VIP':
+        return {
+          bg: 'bg-blue-50',
+          border: 'border-blue-200',
+          highlight: 'text-blue-600',
+          button: 'bg-blue-600 hover:bg-blue-700'
+        };
+      case 'TOP':
+        return {
+          bg: 'bg-purple-50',
+          border: 'border-purple-200',
+          highlight: 'text-purple-600',
+          button: 'bg-purple-600 hover:bg-purple-700'
+        };
+      default:
+        return {
+          bg: 'bg-gray-50',
+          border: 'border-gray-200',
+          highlight: 'text-gray-600',
+          button: 'bg-gray-600 hover:bg-gray-700'
+        };
+    }
+  };
+  
+  const colors = getPlanColors();
 
   return (
-    <div className={`${bgColor} border-2 ${borderColor} p-6 rounded-lg relative ${isActive ? 'ring-4 ring-green-500' : ''}`}>
+    <div className={`card ${colors.bg} ${isActive ? 'ring-4 ring-green-400' : ''} relative`}>
       {isActive && (
-        <div className="absolute -top-4 -right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+        <div className="absolute -top-4 -right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
           Seu Plano Atual
         </div>
       )}
       
-      <h3 className="text-2xl font-minecraft mb-2">{title}</h3>
-      <p className="text-sm mb-4">{description}</p>
+      <h3 className={`text-2xl font-bold mb-2 ${colors.highlight}`}>{title}</h3>
+      <p className="text-gray-600 mb-6">{description}</p>
       
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-6">
         <div>
-          <p className="text-lg font-minecraft text-yellow-300">
+          <p className="text-2xl font-bold text-primary">
             {isFree ? 'GRÁTIS' : `R$ ${price.toFixed(2)}`}
           </p>
-          {days && <p className="text-xs text-gray-300">{days} dias</p>}
+          {days && <p className="text-sm text-gray-500">{days} dias</p>}
         </div>
         
         {!isFree && !isActive && (
           <Link 
             to={`/pagamento/${type.toLowerCase()}`} 
-            className="minecraft-button bg-green-700 hover:bg-green-600"
+            className={`btn-secondary ${colors.button}`}
           >
             Comprar
           </Link>
         )}
         
         {isFree && !isActive && (
-          <span className="text-sm text-gray-300">Plano básico</span>
+          <span className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">Plano básico</span>
         )}
         
         {isActive && (
-          <span className="bg-green-600 text-white px-3 py-1 rounded text-sm">Ativo</span>
+          <span className="bg-green-500 text-white px-3 py-1 rounded-md text-sm font-medium">Ativo</span>
         )}
       </div>
       
-      <div className="mb-4">
+      <div className="mb-6">
         <button 
           onClick={() => setShowItems(!showItems)}
-          className="text-sm text-blue-400 hover:underline flex items-center"
+          className="text-sm text-secondary hover:text-secondary-foreground flex items-center font-medium"
         >
           {showItems ? 'Esconder itens' : 'Ver todos os itens'}
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
-            className={`h-4 w-4 ml-1 transform ${showItems ? 'rotate-180' : ''}`} 
+            className={`h-4 w-4 ml-1 transform transition-transform ${showItems ? 'rotate-180' : ''}`} 
             fill="none" 
             viewBox="0 0 24 24" 
             stroke="currentColor"
@@ -113,39 +141,39 @@ const KitDisplay = (props: KitProps) => {
         </button>
         
         {showItems && (
-          <div className="mt-2 grid grid-cols-2 gap-2 bg-black bg-opacity-30 p-3 rounded text-xs">
+          <div className="mt-4 grid grid-cols-2 gap-y-2 gap-x-4 bg-gray-50 p-4 rounded-md text-sm">
             {items.map((item, index) => (
               <div key={index} className="flex justify-between">
-                <span>{item.name}</span>
-                <span className="text-yellow-300">x{item.quantity}</span>
+                <span className="text-gray-700">{item.name}</span>
+                <span className={`font-medium ${colors.highlight}`}>x{item.quantity}</span>
               </div>
             ))}
           </div>
         )}
       </div>
       
-      <div className="mt-4 pt-4 border-t border-gray-700">
+      <div className="pt-4 border-t border-gray-200">
         <button 
           onClick={() => setShowCheck(!showCheck)} 
-          className="text-sm text-blue-400 hover:underline"
+          className="text-sm text-secondary hover:text-secondary-foreground font-medium"
         >
           Verificar assinatura
         </button>
         
         {showCheck && (
-          <div className="mt-2 bg-black bg-opacity-30 p-3 rounded">
+          <div className="mt-4 bg-gray-50 p-4 rounded-md">
             <div className="flex gap-2">
               <input
                 type="text"
                 placeholder="Seu nome no Minecraft"
                 value={username}
                 onChange={e => setUsername(e.target.value)}
-                className="flex-grow bg-gray-800 border border-gray-700 rounded px-2 py-1 text-sm"
+                className="flex-grow bg-white border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-secondary"
               />
               <button
                 onClick={checkUserSubscription}
                 disabled={isLoading || !username.trim()}
-                className="minecraft-button text-xs px-2 py-1 disabled:opacity-50"
+                className="btn-secondary text-sm px-3 py-2 disabled:opacity-50"
               >
                 {isLoading ? 'Verificando...' : 'Verificar'}
               </button>
