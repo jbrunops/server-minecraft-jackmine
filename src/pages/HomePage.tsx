@@ -1,23 +1,236 @@
-import React from 'react';
+import React, { useEffect, useState, useRef, CSSProperties } from 'react';
 import PlayerCounter from '../components/PlayerCounter';
 
-const HomePage = () => {
+// Interfaces para tipagem
+interface ParticleProps {
+  style: CSSProperties;
+}
+
+interface MinecraftBlockProps {
+  type: string;
+  style: CSSProperties;
+}
+
+// Componente de partícula para o fundo
+const Particle: React.FC<ParticleProps> = ({ style }) => {
+  return <div className="absolute rounded-full opacity-20 bg-white" style={style} />;
+};
+
+// Componente de bloco flutuante do Minecraft
+const MinecraftBlock: React.FC<MinecraftBlockProps> = ({ type, style }) => {
+  const blockClasses = {
+    grass: "bg-minecraft-grass",
+    dirt: "bg-minecraft-dirt",
+    stone: "bg-minecraft-stone",
+    wood: "bg-minecraft-wood",
+    diamond: "bg-minecraft-diamond",
+  };
+
+  return (
+    <div 
+      className={`absolute shadow-lg ${blockClasses[type] || 'bg-gray-500'}`} 
+      style={{
+        width: '30px',
+        height: '30px',
+        borderRadius: '4px',
+        ...style,
+      }}
+    />
+  );
+};
+
+// Estilos para animações personalizadas
+const animationStyles = `
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  @keyframes spin-slow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.4; filter: blur(8px); }
+    50% { opacity: 0.8; filter: blur(12px); }
+  }
+  
+  @keyframes bounce-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+  
+  .animate-bounce-subtle {
+    animation: bounce-subtle 3s ease-in-out infinite;
+  }
+  
+  .animate-reverse {
+    animation-direction: reverse;
+  }
+  
+  .text-shadow {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+`;
+
+interface Particle {
+  id: string;
+  size: number;
+  x: number;
+  y: number;
+  opacity: number;
+  duration: number;
+  delay: number;
+}
+
+interface Block {
+  id: string;
+  type: string;
+  x: number;
+  y: number;
+  rotation: number;
+  duration: number;
+  delay: number;
+  scale: number;
+}
+
+const HomePage: React.FC = () => {
+  const [particles, setParticles] = useState<Particle[]>([]);
+  const [blocks, setBlocks] = useState<Block[]>([]);
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  // Inicializar partículas
+  useEffect(() => {
+    if (!heroRef.current) return;
+    
+    // Criar partículas de fundo
+    const newParticles = Array.from({ length: 30 }).map((_, i) => ({
+      id: `particle-${i}`,
+      size: Math.random() * 5 + 2, // 2-7px
+      x: Math.random() * 100, // posição x em %
+      y: Math.random() * 100, // posição y em %
+      opacity: Math.random() * 0.5 + 0.1, // 0.1-0.6
+      duration: Math.random() * 15 + 10, // 10-25s
+      delay: Math.random() * 5, // 0-5s
+    }));
+    
+    // Criar blocos flutuantes
+    const blockTypes = ['grass', 'dirt', 'stone', 'wood', 'diamond'];
+    const newBlocks = Array.from({ length: 8 }).map((_, i) => ({
+      id: `block-${i}`,
+      type: blockTypes[Math.floor(Math.random() * blockTypes.length)],
+      x: Math.random() * 80 + 10, // 10-90%
+      y: Math.random() * 80 + 10, // 10-90%
+      rotation: Math.random() * 360, // 0-360 graus
+      duration: Math.random() * 20 + 15, // 15-35s
+      delay: Math.random() * 5, // 0-5s
+      scale: Math.random() * 0.7 + 0.5, // 0.5-1.2
+    }));
+    
+    setParticles(newParticles);
+    setBlocks(newBlocks);
+  }, []);
+
   return (
     <div className="container mx-auto px-4 py-4">
-      {/* Hero Section com Logo em Destaque */}
-      <div className="relative py-8 md:py-12 text-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 opacity-50 rounded-xl"></div>
-        <div className="relative z-10 flex flex-col items-center">
-          <img 
-            src="/logo.png" 
-            alt="JackMine Logo" 
-            className="w-[21.12rem] md:w-[26.4rem] h-auto mb-6 drop-shadow-lg"
+      {/* Estilos inline para animações */}
+      <style dangerouslySetInnerHTML={{ __html: animationStyles }} />
+      
+      {/* Hero Section com Logo em Destaque e Animações */}
+      <div ref={heroRef} className="relative overflow-hidden py-16 md:py-24 text-center rounded-3xl mb-12">
+        {/* Fundo com gradiente animado */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-100"></div>
+        
+        {/* Círculos de brilho animados */}
+        <div className="absolute left-1/4 top-1/4 w-64 h-64 rounded-full bg-blue-300/20 animate-pulse-glow"></div>
+        <div className="absolute right-1/4 bottom-1/4 w-80 h-80 rounded-full bg-purple-300/20 animate-pulse-glow animate-reverse"></div>
+        
+        {/* Grade de padrão pixelizado - estilo Minecraft */}
+        <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[length:16px_16px]"></div>
+        
+        {/* Partículas flutuantes */}
+        {particles.map((particle) => (
+          <Particle 
+            key={particle.id}
+            style={{
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+              opacity: particle.opacity,
+              animation: `float ${particle.duration}s ease-in-out infinite`,
+              animationDelay: `${particle.delay}s`,
+            }}
           />
-          <p className="text-lg md:text-xl max-w-2xl mx-auto text-gray-700">
+        ))}
+        
+        {/* Blocos estilo Minecraft flutuantes */}
+        {blocks.map((block) => (
+          <MinecraftBlock 
+            key={block.id}
+            type={block.type}
+            style={{
+              left: `${block.x}%`,
+              top: `${block.y}%`,
+              transform: `rotate(${block.rotation}deg) scale(${block.scale})`,
+              animation: `float ${block.duration}s ease-in-out infinite`,
+              animationDelay: `${block.delay}s`,
+              opacity: 0.7,
+              zIndex: 1,
+            }}
+          />
+        ))}
+        
+        {/* Conteúdo principal com efeitos */}
+        <div className="relative z-10 flex flex-col items-center">
+          {/* Logo com animação suave de flutuação */}
+          <div className="relative mb-6 animate-float">
+            <img 
+              src="/logo.png" 
+              alt="JackMine Logo" 
+              className="w-[21.12rem] md:w-[26.4rem] h-auto drop-shadow-xl"
+            />
+            
+            {/* Efeito de brilho atrás do logo */}
+            <div className="absolute -inset-4 -z-10 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 
+                           rounded-full blur-2xl animate-pulse-glow"></div>
+          </div>
+          
+          {/* Descrição com animação de entrada */}
+          <p className="text-lg md:text-2xl max-w-3xl mx-auto text-gray-700 mb-8 font-medium animate-bounce-subtle text-shadow">
             Seu novo servidor favorito de Minecraft com os melhores kits e diversão garantida!
           </p>
-          <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/assinaturas" className="btn-secondary">Ver Assinaturas</a>
+          
+          {/* Botão com efeitos de hover e animação */}
+          <div className="relative group mt-2">
+            <a 
+              href="/assinaturas" 
+              className="inline-block btn-secondary text-lg px-8 py-4 rounded-xl transform 
+                       transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg 
+                       group-hover:shadow-secondary/20 group-active:scale-95 relative z-10"
+            >
+              Ver Assinaturas
+              
+              {/* Ícone animado */}
+              <span className="inline-block ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+            
+            {/* Efeito de brilho no hover */}
+            <div className="absolute inset-0 -z-10 bg-gradient-to-r from-secondary/50 to-blue-600/50 
+                          opacity-0 group-hover:opacity-100 blur-xl rounded-xl transition-all duration-500"></div>
           </div>
         </div>
       </div>
